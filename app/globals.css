@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-brand font-sans antialiased;
+}
+
+::selection {
+  background: #d4322e;
+  color: #eae8e0;
+}
+
+:focus-visible {
+  outline: 3px solid #171717;
+  outline-offset: 3px;
+}
+
+@layer components {
+  .display {
+    @apply font-extrabold uppercase text-brand;
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+  }
+  .label {
+    @apply text-[11px] font-bold uppercase tracking-[0.08em];
+  }
+  .body-copy {
+    @apply text-[15px] md:text-base font-medium leading-relaxed;
+  }
+  .wrap {
+    @apply mx-auto w-full max-w-[1320px] px-5 md:px-10;
+  }
+  .btn {
+    @apply inline-flex items-center gap-3 rounded-full border-2 border-brand px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-brand transition-colors duration-300;
+  }
+  .btn:hover {
+    @apply bg-brand text-cream;
+  }
+  .btn-solid {
+    @apply bg-brand text-cream;
+  }
+  .btn-solid:hover {
+    @apply bg-ink border-ink;
+  }
+  .btn-light {
+    @apply border-cream text-cream;
+  }
+  .btn-light:hover {
+    @apply bg-cream text-brand;
+  }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 28s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+}
